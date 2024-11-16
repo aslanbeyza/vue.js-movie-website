@@ -1,0 +1,121 @@
+/* Genel sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body stil */
+  .home {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 0 20px;
+  }
+  
+  /* Navbar stil */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left .home-icon img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .navbar-center {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .navbar-center .brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-right .search-box {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+  }
+  
+  .navbar-right .search-box:focus {
+    border-color: #555;
+    background-color: #fff;
+  }
+  
+  /* Movies Grid */
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .movie-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.2s;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .movie-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .movie-title {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  .movie-rating {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .stars {
+    color: #f39c12;
+  }
+  
+  .star {
+    font-size: 1rem;
+  }
+  
+  .star.filled {
+    color: #f39c12;
+  }
+  
