@@ -38,7 +38,7 @@
             </div>
             
             <div v-if="filteredMovies.length === 0" class="no-results">
-             Aradığınız Film Bulunamadı :/ Lütfen element uydurmayalım.
+             Aradığınız Film Bulunamadı
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@
       <div class="movie-info">
         <h1 class="movie-title">{{ movie.Title }}</h1>
 
+        <div></div>
         <!-- Yan Yana Bilgiler -->
         <div class="info-row">
           <p><strong>Year:</strong> {{ movie.Year }}</p>
@@ -33,10 +34,12 @@
         </div>
 
         <!-- Alt Alta Bilgiler -->
-        <p><strong>Genre:</strong> {{ movie.Genre }}</p>
-        <p><strong>Writer:</strong> {{ movie.Writer }}</p>
-        <p><strong>Plot:</strong> {{ movie.Plot }}</p>
-        <p><strong>Box Office:</strong> {{ movie.BoxOffice }}</p>
+        <div class="info-row2">
+          <p><strong>Genre:</strong> {{ movie.Genre }}</p>
+          <p><strong>Writer:</strong> {{ movie.Writer }}</p>
+          <p><strong>Plot:</strong> {{ movie.Plot }}</p>
+          <p><strong>Box Office:</strong> {{ movie.BoxOffice }}</p>
+        </div>
       </div>
     </div>
     <!-- Actor -->
@@ -49,14 +52,14 @@
           class="actor-card"
           @click="goToActorDetail(actor.Name)"
         >
-          <img :src="actor.Photo" :alt="actor.Name" class="actor-photo">
+          <img :src="actor.Photo" :alt="actor.Name" class="actor-photo" />
           <h4>{{ actor.Name }}</h4>
           <h6>{{ actor.Role }}</h6>
         </div>
       </div>
- </div>
-  <!-- Yorumlar -->
-  <div v-if="movie && movie.Comments">
+    </div>
+    <!-- Yorumlar -->
+    <div v-if="movie && movie.Comments">
       <CommentSlider :comments="movie.Comments" />
     </div>
   </div>
@@ -64,12 +67,12 @@
 
 <script>
 import sourceData from "@/data.json";
-import CommentSlider from '@/views/CommentSlider.vue'
+import CommentSlider from "@/views/CommentSlider.vue";
 
 export default {
   name: "MovieDetail",
   components: {
-    CommentSlider
+    CommentSlider,
   },
   data() {
     return {
@@ -79,46 +82,45 @@ export default {
   computed: {
     actorsList() {
       if (!this.movie || !this.movie.Actors) return [];
-      return typeof this.movie.Actors === 'string' 
-        ? this.movie.Actors.split(',').map(name => ({
+      return typeof this.movie.Actors === "string"
+        ? this.movie.Actors.split(",").map((name) => ({
             Name: name.trim(),
-            Photo: '/default-actor-photo.jpg' // varsayılan foto yolu
+            Photo: "/default-actor-photo.jpg", // varsayılan foto yolu
           }))
         : this.movie.Actors;
-    }
+    },
   },
 
   methods: {
     goToActorDetail(actorName) {
-      this.$router.push({ 
-        name: 'ActorDetail', 
-        params: { name: actorName } 
+      this.$router.push({
+        name: "ActorDetail",
+        params: { name: actorName },
       });
     },
 
     loadMovie() {
       const movieId = this.$route.params.id;
-      this.movie = sourceData.movies.find(movie => movie.imdbID === movieId);
-      
+      this.movie = sourceData.movies.find((movie) => movie.imdbID === movieId);
+
       if (!this.movie) {
-        console.error('Film Bulunamadı!');
+        console.error("Film Bulunamadı!");
         // Opsiyonel: Hata sayfasına yönlendirme yapılabilir
         // this.$router.push('/error');
       }
-    }
+    },
   },
 
   mounted() {
     this.loadMovie();
-}
+  },
 };
-
-
 </script>
 
 <style scoped>
 /* Genel Sayfa Stili */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -141,7 +143,9 @@ html, body {
   align-self: flex-start;
   margin-bottom: 20px;
 }
-
+.info-row {
+  margin-left: 5px;
+}
 .back-button {
   display: inline-flex;
   align-items: center;
@@ -163,19 +167,21 @@ html, body {
   height: 20px;
   margin-right: 5px;
 }
-h6{
-  color:#c3c3c3;
+h6 {
+  color: #c3c3c3;
   line-height: 2rem;
+}
+.info-row2 {
+  margin-left: 5px;
 }
 .actors-section {
   width: 100%;
   max-width: 1200px;
   margin-top: 30px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
 }
 /* Film İçeriği */
 .movie-content {
@@ -208,7 +214,6 @@ h6{
   flex-direction: column;
   justify-content: center;
   text-align: left;
-
 }
 
 .movie-title {
@@ -217,7 +222,6 @@ h6{
   color: #fdd835;
   text-align: center;
   margin-bottom: 70px;
-  
 }
 
 .movie-info p {
@@ -261,10 +265,9 @@ h6{
   max-width: 500px;
   margin-top: 30px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
 }
 .actor-cards {
   display: grid;
@@ -284,7 +287,7 @@ h6{
   width: 100%;
   height: 200px;
   border-radius: 8px;
-  object-fit:cover;
+  object-fit: cover;
 }
 /* Footer styles */
 .footer {
@@ -339,6 +342,6 @@ h6{
 
 .get-app img {
   width: 50px;
- height: 50px;
+  height: 50px;
 }
 </style>

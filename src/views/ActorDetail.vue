@@ -145,6 +145,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  padding-left:5px;
 }
 
 .actor-name {

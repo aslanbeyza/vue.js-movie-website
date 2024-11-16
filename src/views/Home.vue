@@ -141,7 +141,6 @@ export default {
 }
 
 .movie-card {
-  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
   border-radius: 15px;
   color: #fff;
   text-align: center;
@@ -168,7 +167,7 @@ export default {
 }
 
 .card-content {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: transparent;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -197,7 +196,6 @@ export default {
   padding: 5px 10px;
   display: inline-block;
   margin-top: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .stars {
