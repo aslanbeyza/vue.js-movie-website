@@ -5,12 +5,11 @@
       class="carousel-container"
       ref="carouselContainer"
     >
-    <h4>Popüler Filmler</h4>
+    <h4>Popular Movies</h4>
       <CustomCarousel :movies="movies" />
     </div>
-
     <div class="allProduct">
-      <h1 class="title" style="color: aliceblue">Tüm Filmler</h1>
+      <h1 class="title" style="color: aliceblue">All Movies</h1>
       <div class="movies-grid">
         <div v-for="movie in movies" :key="movie.imdbID" class="movie-card">
           <router-link :to="'/movie/' + movie.imdbID">
@@ -19,7 +18,7 @@
               <div class="card-content">
                 <!-- IMDB Puanı ve Yıldızlar -->
                 <div class="movie-title">{{ movie.Title }}</div>
-                <div class="movie-rating">
+                 <div class="movie-rating">
                   <span class="rating-text">IMDB: {{ movie.imdbRating }}</span>
                   <div class="stars">
                     <span
@@ -37,6 +36,10 @@
                     </span>
                   </div>
                 </div>
+                <div class="comment-container">
+                  <img src="https://img.icons8.com/?size=100&id=jOjH1Mt48Fp1&format=png&color=FFFFFF" width="15px">
+                  <span class="comment-title">{{ movie.Comments ? Object.keys(movie.Comments).length : 0 }}</span>
+              </div>
               </div>
             </div>
           </router-link>
@@ -173,14 +176,30 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0px;
+}
+
+.comment-container {
+  display: flex;
+  align-items: center; /* İkon ve yorum metnini yan yana hizala */
+  margin-left: auto; /* Yorum kısmını sağ tarafa yasla */
+  padding-right: 10px; /* Sola doğru biraz kaydırmak için sağdan boşluk ekle */
+}
+
+.comment-container img {
+  margin-right: 5px; /* İkon ile metin arasında boşluk */
+}
+
+.comment-title {
+  color: #ffffff;
+  font-size: 11px;
 }
 
 .movie-title {
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -193,14 +212,16 @@ export default {
   color: #ffffff;
   background-color: transparent;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 3px 7px;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 1px;
+  align-items: center; 
 }
 
 .stars {
   display: flex;
   gap: 2px;
+  text-align: center;
 }
 
 .star {
@@ -248,6 +269,6 @@ export default {
 
   .movie-img {
     height: 200px;
-  }
+}
 }
 </style>

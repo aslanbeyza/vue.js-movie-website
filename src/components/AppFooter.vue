@@ -3,7 +3,7 @@
     <div class="footer-content">
       <div class="footer-section social-media">
         <div class="follow-us">
-          <p>Follow IMDb on social</p>
+          <p>MovieApp on social</p>
           <div class="social-icons">
             <a href="#"
               ><svg
